@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pravek agarwal & Associates | Global Chartered Accountancy & Strategic Advisory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; color: #1e293b; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        .bg-navy { background-color: #001a35; }
+        .text-gold { color: #c5a021; }
+        .border-gold { border-color: #c5a021; }
+        .btn-premium { 
+            background: linear-gradient(135deg, #c5a021 0%, #a6851a 100%);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(166, 133, 26, 0.3); }
+        .section-padding { padding: 100px 0; }
+        .stat-card { border-left: 1px solid #e2e8f0; padding-left: 2rem; }
+        .modal { 
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0; 
+            width: 100%; height: 100%; background: rgba(0,0,0,0.85); 
+            backdrop-filter: blur(10px); justify-content: center; align-items: center; 
+        }
+        .hover-lift { transition: transform 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-10px); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        /* mobile menu */
+        .mobile-menu { transition: transform 0.3s ease-in-out; transform: translateX(-100%); }
+        .mobile-menu.open { transform: translateX(0); }
+        /* simple testimonial carousel */
+        .testimonial-item { display: none; }
+        .testimonial-item.active { display: block; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Top Bar -->
+    <div class="bg-navy text-white py-2 px-6 text-xs flex justify-between items-center border-b border-white/10">
+        <div class="flex space-x-6">
+            <span><i class="fas fa-phone-alt text-gold mr-2"></i> +91 78911 66701</span>
+            <span class="hidden md:inline"><i class="fas fa-envelope text-gold mr-2"></i> Office@PravekaggarwalAssociates.com</span>
+        </div>
+        <div class="flex space-x-4">
+            <a href="#" id="clientLoginBtn" class="hover:text-gold transition">Client Login</a>
+            <a href="#" id="careersBtn" class="hover:text-gold transition">Careers</a>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-white/90 backdrop-blur-md py-6 px-8 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-black tracking-tighter text-navy">
+                Pravek agarwal <span class="text-gold font-light">|</span> Associates
+            </div>
+            <div class="hidden lg:flex space-x-10 font-semibold text-xs uppercase tracking-widest">
+                <a href="#about" class="hover:text-gold transition">Our Firm</a>
+                <a href="#services" class="hover:text-gold transition">Practice Areas</a>
+                <a href="#sectors" class="hover:text-gold transition">Sectors</a>
+                <a href="#insights" class="hover:text-gold transition">Insights</a>
+                <a href="#contact" class="hover:text-gold transition">Contact</a>
+            </div>
+            <button id="menuBtn" class="lg:hidden text-navy text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-navy/95 z-50 flex flex-col items-center justify-center space-y-8 text-white text-2xl mobile-menu lg:hidden" style="transform: translateX(-100%);">
+        <button id="closeMenu" class="absolute top-6 right-6 text-3xl"><i class="fas fa-times"></i></button>
+        <a href="#about" class="hover:text-gold transition">Our Firm</a>
+        <a href="#services" class="hover:text-gold transition">Practice Areas</a>
+        <a href="#sectors" class="hover:text-gold transition">Sectors</a>
+        <a href="#insights" class="hover:text-gold transition">Insights</a>
+        <a href="#contact" class="hover:text-gold transition">Contact</a>
+        <hr class="w-16 border-gold">
+        <a href="#" id="mobileClientLogin" class="hover:text-gold transition">Client Login</a>
+        <a href="#" id="mobileCareers" class="hover:text-gold transition">Careers</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="relative h-[90vh] flex items-center overflow-hidden bg-navy">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80" alt="Corporate Architecture" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-8 relative z-10">
+            <div class="max-w-3xl">
+                <h6 class="text-gold font-bold tracking-[0.3em] uppercase mb-4 text-sm">Established Excellence</h6>
+                <h1 class="text-5xl md:text-7xl text-white font-bold mb-8 leading-tight">Navigating Complexity <br>With <span class="italic text-gold">Absolute Precision.</span></h1>
+                <p class="text-xl text-white/70 mb-10 leading-relaxed font-light">We provide comprehensive financial, tax, and regulatory solutions for global enterprises, HNIs, and emerging startups.</p>
+                <div class="flex flex-wrap gap-5">
+                    <a href="#contact" id="briefingBtn" class="btn-premium px-10 py-5 font-bold rounded-sm">Request Private Briefing</a>
+                    <a href="#services" id="capabilitiesBtn" class="border border-white/40 text-white px-10 py-5 hover:bg-white hover:text-navy transition font-bold uppercase tracking-widest text-sm">Our Capabilities</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="bg-slate-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 py-12 px-8">
+            <div class="stat-card">
+                <h2 class="text-3xl font-bold text-navy">25+</h2>
+                <p class="text-xs uppercase tracking-widest text-slate-500 mt-2">Years of Legacy</p>
+            </div>
+            <div class="stat-card">
+                <h2 class="text-3xl font-bold text-navy">500+</h2>
+                <p class="text-xs uppercase tracking-widest text-slate-500 mt-2">Corporate Clients</p>
+            </div>
+            <div class="stat-card">
+                <h2 class="text-3xl font-bold text-navy">12+</h2>
+                <p class="text-xs uppercase tracking-widest text-slate-500 mt-2">Global Partners</p>
+            </div>
+            <div class="stat-card border-r border-slate-200">
+                <h2 class="text-3xl font-bold text-navy">100%</h2>
+                <p class="text-xs uppercase tracking-widest text-slate-500 mt-2">Compliance Record</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <section class="section-padding px-8" id="about">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div>
+                <h2 class="text-4xl font-bold mb-8 text-navy leading-tight">A Multidisciplinary Approach to Corporate Wealth.</h2>
+                <p class="text-lg text-slate-600 mb-6 leading-relaxed">Pravek agarwal & Associates is not just a tax firm; we are strategic architects. We understand that in a globalized economy, compliance is the baseline, but strategic planning is the differentiator.</p>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">Our partners bring decades of experience in navigating the most complex regulatory environments, from SEBI mandates to International Transfer Pricing.</p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-check-circle text-gold mt-1"></i>
+                        <div><h4 class="font-bold">Confidentiality First</h4><p class="text-sm text-slate-500">Airtight NDA protocols for all corporate disclosures.</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-check-circle text-gold mt-1"></i>
+                        <div><h4 class="font-bold">Proactive Compliance</h4><p class="text-sm text-slate-500">Early warning systems for regulatory changes.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="Consultation" class="rounded-lg shadow-xl mt-10">
+                <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=600&q=80" alt="Office" class="rounded-lg shadow-xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section-padding bg-slate-900 text-white px-8" id="services">
+        <div class="max-w-7xl mx-auto text-center mb-20">
+            <h6 class="text-gold font-bold tracking-widest mb-4 uppercase text-sm">Practice Areas</h6>
+            <h2 class="text-5xl font-bold">Solutions for the Modern Enterprise</h2>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-12 border border-white/10 hover:border-gold transition group cursor-pointer" onclick="openModal('tax-modal')">
+                <div class="text-gold text-4xl mb-8 group-hover:scale-110 transition duration-500"><i class="fas fa-landmark"></i></div>
+                <h3 class="text-2xl font-bold mb-4">Strategic Taxation</h3>
+                <ul class="text-slate-400 space-y-3 mb-8 text-sm">
+                    <li>• International Transfer Pricing</li>
+                    <li>• GST Advisory & Litigation</li>
+                    <li>• Expatriate Tax Management</li>
+                </ul>
+                <button class="text-xs font-bold tracking-tighter border-b border-gold pb-1 group-hover:text-gold transition uppercase">View Detailed Approach</button>
+            </div>
+
+            <div class="p-12 border border-white/10 hover:border-gold transition group cursor-pointer" onclick="openModal('audit-modal')">
+                <div class="text-gold text-4xl mb-8 group-hover:scale-110 transition duration-500"><i class="fas fa-balance-scale"></i></div>
+                <h3 class="text-2xl font-bold mb-4">Assurance & Risk</h3>
+                <ul class="text-slate-400 space-y-3 mb-8 text-sm">
+                    <li>• Statutory Audits (Ind-AS)</li>
+                    <li>• Forensic Financial Audits</li>
+                    <li>• Internal Control Review</li>
+                </ul>
+                <button class="text-xs font-bold tracking-tighter border-b border-gold pb-1 group-hover:text-gold transition uppercase">View Detailed Approach</button>
+            </div>
+
+            <div class="p-12 border border-white/10 hover:border-gold transition group cursor-pointer" onclick="openModal('business-modal')">
+                <div class="text-gold text-4xl mb-8 group-hover:scale-110 transition duration-500"><i class="fas fa-rocket"></i></div>
+                <h3 class="text-2xl font-bold mb-4">Corporate Growth</h3>
+                <ul class="text-slate-400 space-y-3 mb-8 text-sm">
+                    <li>• Transaction Advisory (M&A)</li>
+                    <li>• Startup Fund Raising Support</li>
+                    <li>• Entity Structuring & ROC</li>
+                </ul>
+                <button class="text-xs font-bold tracking-tighter border-b border-gold pb-1 group-hover:text-gold transition uppercase">View Detailed Approach</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectors -->
+    <section class="section-padding px-8 bg-slate-50" id="sectors">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div class="max-w-2xl">
+                    <h2 class="text-4xl font-bold text-navy mb-4">Sector-Specific Expertise</h2>
+                    <p class="text-slate-500 italic">Financial regulations differ across industries. We provide deep vertical expertise.</p>
+                </div>
+                <a href="#contact" class="text-gold font-bold border-b-2 border-gold pb-2 hover:text-navy transition">Consult for your Industry →</a>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-8 shadow-sm hover-lift text-center">
+                    <i class="fas fa-microchip text-3xl mb-4 text-navy opacity-30"></i>
+                    <h4 class="font-bold">Technology</h4>
+                </div>
+                <div class="bg-white p-8 shadow-sm hover-lift text-center">
+                    <i class="fas fa-hospital text-3xl mb-4 text-navy opacity-30"></i>
+                    <h4 class="font-bold">Healthcare</h4>
+                </div>
+                <div class="bg-white p-8 shadow-sm hover-lift text-center">
+                    <i class="fas fa-shopping-cart text-3xl mb-4 text-navy opacity-30"></i>
+                    <h4 class="font-bold">E-Commerce</h4>
+                </div>
+                <div class="bg-white p-8 shadow-sm hover-lift text-center">
+                    <i class="fas fa-building text-3xl mb-4 text-navy opacity-30"></i>
+                    <h4 class="font-bold">Real Estate</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section (new) -->
+    <section class="section-padding px-8" id="team">
+        <div class="max-w-7xl mx-auto text-center">
+            <h6 class="text-gold font-bold tracking-widest mb-4 uppercase text-sm">Leadership</h6>
+            <h2 class="text-4xl font-bold text-navy mb-16">Partners & Principals</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="text-center">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="Partner" class="w-40 h-40 rounded-full mx-auto object-cover shadow-lg mb-6">
+                    <h4 class="text-2xl font-bold">Rajeev Sharma</h4>
+                    <p class="text-gold font-semibold mb-2">Founder & Senior Partner</p>
+                    <p class="text-sm text-slate-500">30+ years in international tax, former advisor to UNCTAD.</p>
+                </div>
+                <div class="text-center">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Partner" class="w-40 h-40 rounded-full mx-auto object-cover shadow-lg mb-6">
+                    <h4 class="text-2xl font-bold">Anjali Mehta</h4>
+                    <p class="text-gold font-semibold mb-2">Head of Assurance</p>
+                    <p class="text-sm text-slate-500">Ex-PwC, specializes in forensic audits and Ind-AS.</p>
+                </div>
+                <div class="text-center">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" alt="Partner" class="w-40 h-40 rounded-full mx-auto object-cover shadow-lg mb-6">
+                    <h4 class="text-2xl font-bold">Vikram Kapoor</h4>
+                    <p class="text-gold font-semibold mb-2">M&A & Corporate Strategy</p>
+                    <p class="text-sm text-slate-500">Led 50+ cross-border transactions in last decade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (new) -->
+    <section class="section-padding px-8 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h6 class="text-gold font-bold tracking-widest mb-4 uppercase text-sm">Client Voices</h6>
+            <h2 class="text-4xl font-bold mb-12">Trusted by Global Leaders</h2>
+            <div class="relative">
+                <div class="testimonial-item active">
+                    <i class="fas fa-quote-left text-gold text-4xl opacity-50 mb-6"></i>
+                    <p class="text-xl italic mb-8">"Pravek agarwal & Associates handled our cross-border acquisition with absolute discretion and technical brilliance. They are our go-to advisors for any complex financial restructuring."</p>
+                    <p class="font-bold">— CFO, Tech Mahindra Global</p>
+                </div>
+                <div class="testimonial-item">
+                    <i class="fas fa-quote-left text-gold text-4xl opacity-50 mb-6"></i>
+                    <p class="text-xl italic mb-8">"Their GST litigation team saved us over ₹12 crore in potential penalties. Proactive, knowledgeable, and highly responsive."</p>
+                    <p class="font-bold">— Director, Apollo Logistics</p>
+                </div>
+                <div class="testimonial-item">
+                    <i class="fas fa-quote-left text-gold text-4xl opacity-50 mb-6"></i>
+                    <p class="text-xl italic mb-8">"We’ve worked with them for a decade. Their insight into international transfer pricing is unparalleled in India."</p>
+                    <p class="font-bold">— Group Tax Head, Aditya Birla Group</p>
+                </div>
+                <div class="flex justify-center gap-4 mt-8">
+                    <button id="prevTestimonial" class="border border-white/30 px-4 py-2 hover:bg-gold hover:border-gold transition"><i class="fas fa-chevron-left"></i></button>
+                    <button id="nextTestimonial" class="border border-white/30 px-4 py-2 hover:bg-gold hover:border-gold transition"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights (new) -->
+    <section class="section-padding px-8" id="insights">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-navy mb-4 text-center">Recent Insights</h2>
+            <p class="text-slate-500 text-center mb-16">Thought leadership from our partners</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="border border-slate-200 p-6 hover-lift">
+                    <h4 class="font-bold text-xl mb-2">Budget 2025: Key takeaways for global investors</h4>
+                    <p class="text-slate-500 text-sm mb-4">Analysis of new tax regimes and their impact on FDI.</p>
+                    <a href="#" class="text-gold text-sm font-bold">Read more →</a>
+                </div>
+                <div class="border border-slate-200 p-6 hover-lift">
+                    <h4 class="font-bold text-xl mb-2">Transfer pricing in the digital economy</h4>
+                    <p class="text-slate-500 text-sm mb-4">How OECD BEPS 2.0 changes the game for Indian IT firms.</p>
+                    <a href="#" class="text-gold text-sm font-bold">Read more →</a>
+                </div>
+                <div class="border border-slate-200 p-6 hover-lift">
+                    <h4 class="font-bold text-xl mb-2">Startup valuation and ESOP taxation</h4>
+                    <p class="text-slate-500 text-sm mb-4">A guide for founders navigating Series A funding.</p>
+                    <a href="#" class="text-gold text-sm font-bold">Read more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       <!-- FAQ -->
+    <section class="section-padding px-8 bg-slate-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 text-navy">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="w-full p-6 text-left font-bold flex justify-between items-center bg-white" onclick="toggleFAQ(this)">
+                        What industries do you specialize in?
+                        <i class="fas fa-chevron-down text-gold"></i>
+                    </button>
+                    <div class="accordion-content px-6 text-slate-600">
+                        <p class="pb-6">We serve a diverse range of industries including IT/SaaS, Manufacturing, Real Estate, and Retail. Our partners are specialists in industry-specific compliance standards like GST for exporters and Ind-AS for large-cap firms.</p>
+                    </div>
+                </div>
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="w-full p-6 text-left font-bold flex justify-between items-center bg-white" onclick="toggleFAQ(this)">
+                        How do you ensure data confidentiality?
+                        <i class="fas fa-chevron-down text-gold"></i>
+                    </button>
+                    <div class="accordion-content px-6 text-slate-600">
+                        <p class="pb-6">Data security is paramount. We use enterprise-grade encrypted servers and strictly follow GDPR-aligned privacy policies for all our corporate clients.</p>
+                    </div>
+                </div>
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="w-full p-6 text-left font-bold flex justify-between items-center bg-white" onclick="toggleFAQ(this)">
+                        Do you work with early-stage startups?
+                        <i class="fas fa-chevron-down text-gold"></i>
+                    </button>
+                    <div class="accordion-content px-6 text-slate-600">
+                        <p class="pb-6">Absolutely. We have a dedicated startup practice offering founder-friendly fee structures, ESOP tax planning, and investor report preparation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-navy text-white pt-24">
+        <div class="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-20 pb-20">
+            <div>
+                <h2 class="text-5xl font-bold mb-8 text-gold">Let’s Discuss Your <br>Fiscal Future.</h2>
+                <p class="text-white/60 mb-10 text-lg">Confidentiality and high-level strategy are at the heart of our practice. Book a private consultation with our senior partners.</p>
+                <div class="space-y-8">
+                    <div class="flex gap-6">
+                        <div class="text-gold text-2xl"><i class="fas fa-map-marker-alt"></i></div>
+                        <div><h4 class="font-bold">Headquarters</h4><p class="text-white/50 text-sm">Office No, .M-FF43,  FIRST FLOOR, CAPITAL HIGHSTREET, Near By  GANPATI PLAZA, Bhiwadi Chopanki Road, Phool Bagh, Bhiwadi-301019, Rajasthan</p></div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="text-gold text-2xl"><i class="fas fa-envelope-open-text"></i></div>
+                        <div><h4 class="font-bold">General Inquiry</h4><p class="text-white/50 text-sm">Office@PravekaggarwalAssociates.com</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-12 rounded-sm shadow-2xl">
+                <h3 class="text-navy text-2xl font-bold mb-8 text-center">Inquiry Form</h3>
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="First Name" class="w-full p-4 bg-slate-100 rounded-sm text-navy focus:outline-gold" required>
+                        <input type="text" placeholder="Last Name" class="w-full p-4 bg-slate-100 rounded-sm text-navy focus:outline-gold" required>
+                    </div>
+                    <input type="email" placeholder="Corporate Email ID" class="w-full p-4 bg-slate-100 rounded-sm text-navy focus:outline-gold" required>
+                    <select class="w-full p-4 bg-slate-100 rounded-sm text-slate-500 focus:outline-gold">
+                        <option>Primary Practice Area</option>
+                        <option>International Tax</option>
+                        <option>Mergers & Acquisitions</option>
+                        <option>Statutory Audit</option>
+                    </select>
+                    <textarea placeholder="Message (Optional)" class="w-full p-4 bg-slate-100 rounded-sm text-navy focus:outline-gold h-32"></textarea>
+                    <button type="submit" class="w-full btn-premium py-5 font-bold">Submit Engagement Request</button>
+                    <p id="formMessage" class="text-center text-sm text-green-600 hidden">Thank you. We'll contact you shortly.</p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="border-t border-white/5 py-12 px-8">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-sm text-white/40">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="text-white font-bold mb-6">Pravek agarwal & Associates</div>
+                    <p>A premier global advisory firm dedicated to helping clients achieve clarity in financial and regulatory complexity.</p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Resources</h5>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-gold transition">Tax Calendars</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Download Forms</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Regulatory Alerts</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Company</h5>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-gold transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Partner Profiles</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Legal Notice</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Social</h5>
+                    <div class="flex space-x-4 text-xl">
+                        <a href="#" class="hover:text-gold"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-gold"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-20 opacity-30 text-[10px] tracking-[0.3em] uppercase">
+                Designed for Global Financial Standards | © 2026 Pravek agarwal & Associates
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <!-- Tax Modal -->
+    <div id="tax-modal" class="modal" onclick="closeModal('tax-modal')">
+        <div class="bg-white p-12 max-w-2xl rounded-sm shadow-2xl relative" onclick="event.stopPropagation()">
+            <h3 class="text-4xl font-bold mb-6 text-navy">Strategic Taxation</h3>
+            <p class="text-slate-600 mb-6 leading-relaxed">Our tax practice focuses on structural efficiency. From setting up offshore entities to defending complex GST litigations, our team ensures you remain compliant while optimizing your tax outflows.</p>
+            <div class="grid grid-cols-2 gap-8 mb-8">
+                <div><h5 class="font-bold text-gold">Direct Tax</h5><p class="text-xs text-slate-500">Assessments, Appeals, and Planning.</p></div>
+                <div><h5 class="font-bold text-gold">Indirect Tax</h5><p class="text-xs text-slate-500">GST Compliance and Audits.</p></div>
+            </div>
+            <button onclick="closeModal('tax-modal')" class="btn-premium px-8 py-3 text-xs">Close</button>
+        </div>
+    </div>
+
+    <!-- Audit Modal -->
+    <div id="audit-modal" class="modal" onclick="closeModal('audit-modal')">
+        <div class="bg-white p-12 max-w-2xl rounded-sm shadow-2xl relative" onclick="event.stopPropagation()">
+            <h3 class="text-4xl font-bold mb-6 text-navy">Assurance & Risk</h3>
+            <p class="text-slate-600 mb-6 leading-relaxed">We provide independent assurance that enhances credibility. Our audits go beyond compliance—they identify operational risks and control weaknesses before they become liabilities.</p>
+            <div class="grid grid-cols-2 gap-8 mb-8">
+                <div><h5 class="font-bold text-gold">Statutory Audit</h5><p class="text-xs text-slate-500">Ind-AS, IFRS readiness.</p></div>
+                <div><h5 class="font-bold text-gold">Forensic</h5><p class="text-xs text-slate-500">Fraud investigation, dispute support.</p></div>
+            </div>
+            <button onclick="closeModal('audit-modal')" class="btn-premium px-8 py-3 text-xs">Close</button>
+        </div>
+    </div>
+
+    <!-- Business Modal -->
+    <div id="business-modal" class="modal" onclick="closeModal('business-modal')">
+        <div class="bg-white p-12 max-w-2xl rounded-sm shadow-2xl relative" onclick="event.stopPropagation()">
+            <h3 class="text-4xl font-bold mb-6 text-navy">Corporate Growth</h3>
+            <p class="text-slate-600 mb-6 leading-relaxed">We partner with you through every stage of the corporate lifecycle—from entity formation and fund raising to exit strategies. Our M&A team has executed deals worth over $2 billion.</p>
+            <div class="grid grid-cols-2 gap-8 mb-8">
+                <div><h5 class="font-bold text-gold">M&A Advisory</h5><p class="text-xs text-slate-500">Buy-side, sell-side, due diligence.</p></div>
+                <div><h5 class="font-bold text-gold">Startup Services</h5><p class="text-xs text-slate-500">Fundraising, ESOP, ROC compliance.</p></div>
+            </div>
+            <button onclick="closeModal('business-modal')" class="btn-premium px-8 py-3 text-xs">Close</button>
+        </div>
+  </div>
+  
+      <!-- Login Modal (for client login & careers) -->
+    <div id="login-modal" class="modal" onclick="closeModal('login-modal')">
+        <div class="bg-white p-12 max-w-md rounded-sm shadow-2xl relative" onclick="event.stopPropagation()">
+            <h3 class="text-3xl font-bold mb-6 text-navy" id="loginModalTitle">Client Login</h3>
+            <form id="loginForm" class="space-y-4">
+                <input type="email" placeholder="Email" class="w-full p-3 bg-slate-100 rounded-sm" required>
+                <input type="password" placeholder="Password" class="w-full p-3 bg-slate-100 rounded-sm" required>
+                <button type="submit" class="w-full btn-premium py-3">Access Portal</button>
+                <p class="text-xs text-slate-500 mt-2">Demo: any email/password works</p>
+            </form>
+            <button onclick="closeModal('login-modal')" class="absolute top-4 right-4 text-2xl">&times;</button>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        // FAQ accordion
+        window.toggleFAQ = function(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
+
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('open');
+            });
+        }
+        if (closeMenu) {
+            closeMenu.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        }
+        // close mobile menu on link click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                mobileMenu.classList.remove('open');
+                if (link.id === 'mobileClientLogin' || link.id === 'mobileCareers') {
+                    e.preventDefault();
+                    let title = (link.id === 'mobileClientLogin') ? 'Client Login' : 'Careers – Submit CV';
+                    document.getElementById('loginModalTitle').innerText = title;
+                    openModal('login-modal');
+                } else {
+                    // smooth scroll
+                    const targetId = link.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        document.getElementById('loginModalTitle').innerText = title;
+                    openModal('login-modal');
+                } else {
+                    // smooth scroll
+                    const targetId = link.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Client login and careers buttons (top bar + mobile handled)
+        document.getElementById('clientLoginBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('loginModalTitle').innerText = 'Client Login';
+            openModal('login-modal');
+        });
+        document.getElementById('careersBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('loginModalTitle').innerText = 'Careers – Submit CV';
+            openModal('login-modal');
+        });
+        // also for mobile we already set above
+
+        // Smooth scroll for nav links (desktop)
+        document.querySelectorAll('.hidden.lg\\:flex a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Hero buttons
+        document.getElementById('briefingBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('capabilitiesBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('formMessage').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('formMessage').classList.add('hidden');
+            }, 3000);
+            e.target.reset();
+        });
+
+        // Login form (demo)
+        document.getElementById('loginForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Demo: Login successful (no validation)');
+            closeModal('login-modal');
+        });
+
+        // Testimonial carousel
+        const items = document.querySelectorAll('.testimonial-item');
+        let current = 0;
+        document.getElementById('nextTestimonial')?.addEventListener('click', () => {
+            items[current].classList.remove('active');
+            current = (current + 1) % items.length;
+            items[current].classList.add('active');
+        });
+        document.getElementById('prevTestimonial')?.addEventListener('click', () => {
+            items[current].classList.remove('active');
+            current = (current - 1 + items.length) % items.length;
+            items[current].classList.add('active');
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Additional: make sure all "View Detailed Approach" open modals (already have onclick)
+        // Also sector link
+        document.querySelector('#sectors a[href="#contact"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Footer links (prevent default and smooth if internal)
+        document.querySelectorAll('footer a, .border-t a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.getAttribute('href')?.startsWith('#')) {
+                    e.preventDefault();
+                    const id = link.getAttribute('href');
+                    if (id && id !== '#') {
+                        document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
